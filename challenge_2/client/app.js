@@ -63,10 +63,11 @@ var testData = {
 // $.post(, testData, success, application/json);
 
 $("#submitClick").click(() => {
-  // alert('Click happened');
+  
   $.post('http://localhost:3000/abcd', { data: JSON.stringify(testData) })
     .done(function (data) {
-      $('p').append('status: ' + status + ', data: ' + data);
+      //alert('Click happened');
+      $('#output').val(data);
     });
 })
 
