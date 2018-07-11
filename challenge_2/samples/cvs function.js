@@ -1,18 +1,4 @@
-
-// var workWithData = function ('./sales_report.js', ) {
-//   //read the data from the file sales_report.json
-//   fs.readFile('./sales_report.js', (err, data) => {
-//     if (err) {
-//       console.log('There is an error: ', err);
-//       return;
-//     }
-//     console.log(data);
-//   });
-// }
-
-
-//post it to the server
-var testData = {
+var data = {
   "firstName": "Joshie",
   "lastName": "Wyattson",
   "county": "San Mateo",
@@ -58,17 +44,17 @@ var testData = {
       "children": []
     }
   ]
-}
+};
+
+
+
+
+
+const csv = (data) => {
+  let array = Object.keys(data);
+  const recurse = (data) => {
+    let valuesArray = Object.values(data)
+  }
+  recurse();
   
-// $.post(, testData, success, application/json);
-
-$("#submitClick").click(() => {
-  // alert('Click happened');
-  $.post('http://localhost:3000/abcd', { data: JSON.stringify(testData) })
-    .done(function (data) {
-      $('p').append('status: ' + status + ', data: ' + data);
-    });
-})
-
-
-
+}
