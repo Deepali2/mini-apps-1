@@ -11,7 +11,7 @@
 // }
 
 
-//post it to the server
+//post it to the server{
 var testData = {
   "firstName": "Joshie",
   "lastName": "Wyattson",
@@ -59,16 +59,22 @@ var testData = {
     }
   ]
 }
+
   
 // $.post(, testData, success, application/json);
 
 $("#submitClick").click(() => {
   
-  $.post('http://localhost:3000/abcd', { data: JSON.stringify(testData) })
-    .done(function (data) {
-      //alert('Click happened');
+  $.ajax({
+    type: "POST",
+    url: 'http://localhost:3000/abcd',
+    data: JSON.stringify(testData),
+    success: (data) => {
+      alert('Click happened');
       $('#output').val(data);
-    });
+    },
+    // dataType: dataType
+  });
 })
 
 

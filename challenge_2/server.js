@@ -22,13 +22,45 @@ app.use(bodyParser.json());
 // })
 
 app.post('/abcd', function (req, res) { 
-  // var input = req.body;
-  // //function to create a csv 
-  // var csv = (input) => {
+  var input = req.body;
+  console.log(input);
+  console.log(req.body);
+  //function to create a csv 
+  const csv = (obj) => {
+    //initialize an array with the keys of the data
+    let arr = Object.keys(obj);
+    //remove the children element from the array
+    let arr1 = arr.pop();
+    //make the keys into a string
+    let str = arr.join();
 
-  // };  
+    //recursive function to handle all the key values
+    const recurse = (obj, arrInner = []) => {
+      //add all the key values     
+      for (let key in obj) {
+        //if the value is not an array, then add the value to str1      
+        if (!Array.isArray(obj[key])) {
+          arrInner.push(obj[key]);
+          //if all the values have been added except for the last, then 
+          //join the inner array and add it to str
+          if (arrInner.length === arr.length) {
+            strInner = arrInner.join();
+            str += '\n' + strInner;
+          }
+
+        } else {
+          for (let i = 0; i < obj[key].length; i++) {
+            recurse(obj[key][i], arrayInner = []);
+          }
+        }
+
+      }
+    }
+    recurse(obj);
+    return str;
+  }
  
-  res.send('hello');
+  res.send(JSON.stringify(input));
 })
 
 app.listen(3000);

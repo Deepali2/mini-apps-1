@@ -1,4 +1,4 @@
-var data = {
+var obj = {
   "firstName": "Joshie",
   "lastName": "Wyattson",
   "county": "San Mateo",
@@ -50,11 +50,37 @@ var data = {
 
 
 
-const csv = (data) => {
-  let array = Object.keys(data);
-  const recurse = (data) => {
-    let valuesArray = Object.values(data)
-  }
-  recurse();
+const csv = (obj) => {
+  //initialize an array with the keys of the data
+  let arr = Object.keys(obj); 
+  //remove the children element from the array
+  let arr1 = arr.pop();
+  //make the keys into a string
+  let str = arr.join();
   
+  //recursive function to handle all the key values
+  const recurse = (obj, arrInner=[]) => {   
+    //add all the key values     
+    for (let key in obj) {  
+      //if the value is not an array, then add the value to str1      
+      if (!Array.isArray(obj[key])) {        
+        arrInner.push(obj[key]);              
+        //if all the values have been added except for the last, then 
+        //join the inner array and add it to str
+        if (arrInner.length === arr.length ) {
+          strInner = arrInner.join();
+          str += '\n' + strInner;
+        }        
+            
+      } else{
+        for (let i = 0; i < obj[key].length; i++) {                 
+          recurse(obj[key][i], arrayInner=[]);
+        }        
+      }
+     
+    }
+  }
+  recurse(obj);
+  return str;
 }
+console.log(csv(obj));
