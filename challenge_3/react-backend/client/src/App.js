@@ -46,12 +46,61 @@ class App extends Component {
 
 
 class Form1 extends Component {
+  constructor(props) {
+    super(props);
+    this.state= {
+      nameValue: '',
+      email:'',
+      password:'',
+    }
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+  }
+
+  handleNameChange(event) {
+    this.setState({ nameValue: event.target.value });
+  }
+  
+  handleEmailChange(event) {
+    this.setState({ email: event.target.value });
+  }
+
+  handlePasswordChange(event) {
+    this.setState({ password: event.target.value });
+  }
+
+
   render() {
+    console.log('nameValue:', this.state.nameValue );
     return (
       <div> 
-        <input type="text" name="name" placeholder="Enter your first and last name" />
-        <input type="text" name="email" placeholder="Enter your email address" />
-        <input type="text" name="password" placeholder="Enter a unique password" />
+        <input 
+          type="text" 
+          name="name" 
+          value={this.state.nameValue}
+          onChange={this.handleNameChange}
+          placeholder="first and last name" 
+        />
+       
+        <input 
+          type="text"
+          name="email"
+          value={this.state.email}
+          onChange={this.handleEmailChange}
+          placeholder="email"  
+        
+        />
+
+        <input
+          type="text"
+          name="password"
+          value={this.state.password}
+          onChange={this.handlePasswordChange}
+          placeholder="password"
+
+        />
+        
       </div>
     );
   }
@@ -59,3 +108,9 @@ class Form1 extends Component {
 }
 
 export default App;
+
+
+
+
+
+//onChange={(event) => {this.setState({name: event.target.value})}}
