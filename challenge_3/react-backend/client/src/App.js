@@ -8,6 +8,7 @@ class App extends Component {
       page: 0,
     }
     this.incrementPage = this.incrementPage.bind(this);
+    this.getText = this.getText.bind(this);
   }
   componentDidMount() {
     fetch('/users')
@@ -21,13 +22,19 @@ class App extends Component {
     
     );
   }
+  //get the appropriate text for the button
+  getText() {
+    return this.state.page === 0 ? 'CHECKOUT' : 'NEXT';      
+  }
+
   render() {
     console.log('currentPage:', this.state.page);
     return (
       <div className="App">
-        {this.state.page === 0 && <button onClick={this.incrementPage}>Checkout</button>}
         
         {this.state.page === 1 && <Form1 />}
+        {this.state.page < 4 && <button onClick={this.incrementPage}>{this.getText()}</button>}
+
         
         
       </div>
