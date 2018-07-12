@@ -48,7 +48,10 @@ class App extends Component {
 class Form1 extends Component {
   render() {
     return (
-      <div> FORM1
+      <div> 
+        <input type="text" name="name" placeholder="Enter your first and last name" />
+        <input type="text" name="email" placeholder="Enter your email address" />
+        <input type="text" name="password" placeholder="Enter a unique password" />
       </div>
     );
   }
