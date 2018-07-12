@@ -18,15 +18,16 @@ class App extends Component {
   incrementPage() {
     this.setState(prevState => 
       ({ page: prevState.page + 1 })
+    
     );
   }
   render() {
     console.log('currentPage:', this.state.page);
     return (
       <div className="App">
-        <button onClick={this.incrementPage}>Checkout</button>
+        {this.state.page === 0 && <button onClick={this.incrementPage}>Checkout</button>}
         
-        <Form1 />
+        {this.state.page === 1 && <Form1 />}
         
         
       </div>
