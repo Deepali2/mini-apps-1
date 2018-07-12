@@ -4,7 +4,10 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    state = { users: [] }
+    this.state = { 
+      page: 0,
+    }
+    this.incrementPage = this.incrementPage.bind(this);
   }
   componentDidMount() {
     fetch('/users')
@@ -12,16 +15,36 @@ class App extends Component {
       .then(users => this.setState({ users }));
   }
 
+  incrementPage() {
+    this.setState(prevState => 
+      ({ page: prevState.page + 1 })
+    );
+  }
   render() {
+    console.log('currentPage:', this.state.page);
     return (
       <div className="App">
-        <h1>Users</h1>
-        {this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>
-        )}
+        <button onClick={this.incrementPage}>Checkout</button>
+        
+        <Form1 />
+        
+        
       </div>
     );
   }
+}
+
+
+
+
+class Form1 extends Component {
+  render() {
+    return (
+      <div> FORM1
+      </div>
+    );
+  }
+
 }
 
 export default App;
